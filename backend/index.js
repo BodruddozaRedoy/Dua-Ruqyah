@@ -1,10 +1,12 @@
 const express = require('express');
 const db = require('./utils/db');
+const cors = require('cors');
 const app = express()
 const port = 5000
 
 // middleware  
 app.use(express.json())
+app.use(cors())
 
 // api routes 
 app.get('/api/categories', (req, res) => {
