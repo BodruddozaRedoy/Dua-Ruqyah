@@ -5,11 +5,22 @@ import React, { useState } from 'react'
 import { GoDotFill } from 'react-icons/go'
 import { AnimatePresence, motion } from 'framer-motion'
 import { useSubCategory } from '@/hooks/useSubCategory'
+import { useDuas } from '@/hooks/useDuas'
+import { useDuaStore } from '@/store/duaStore'
 
 const AccordionItems = ({ category }: any) => {
   const [open, setOpen] = useState(false)
   const { subcategories, isLoading, isError } = useSubCategory(category.cat_id, open)
+  // const [subCat, setSubCat] = useState()
+  const { duas, setSubCat, refetch, setSubName } = useDuas()
+  const { setSubCatName, setSubCatId } = useDuaStore()
 
+
+  const handleSub = (id: any, subName: any) => {
+    // refetch()
+    setSubCatId(id)
+    setSubCatName(subName)
+  }
   return (
     <div>
       <div
@@ -44,7 +55,7 @@ const AccordionItems = ({ category }: any) => {
             className='overflow-hidden cursor-pointer select-none'
           >
             {subcategories.map((sub: any, index: number) => (
-              <div key={sub._id || index} className='border-dashed border-l border-[#1FA45B] ml-5'>
+              <div onClick={() => handleSub(sub.subcat_id, sub.subcat_name_en)} key={sub._id || index} className='border-dashed border-l border-[#1FA45B] ml-5'>
                 <div className='flex items-center relative py-4'>
                   <GoDotFill className='absolute -left-2 text-[#1FA45B]' />
                   <p className='pl-5 text-[16px] font-semibold'>{sub.subcat_name_en}</p>

@@ -6,7 +6,7 @@ export const useCategory = () => {
         queryKey: ['categories'],
         queryFn: async () => {
           const res = await axios.get("http://localhost:5000/api/categories")
-          console.log(res.data.categories)
+          console.log("category",res.data.categories)
           return res.data.categories
         }
       })

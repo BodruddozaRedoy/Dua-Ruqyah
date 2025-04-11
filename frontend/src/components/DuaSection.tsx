@@ -4,9 +4,13 @@ import DuaCard from './DuaCard'
 import { useQuery } from '@tanstack/react-query'
 import axios from 'axios'
 import { useDuas } from '@/hooks/useDuas'
+import { useSubCategory } from '@/hooks/useSubCategory'
+import { useDuaStore } from '@/store/duaStore'
 
 const DuaSection = () => {
-    const {duas, isLoading} = useDuas()
+    const {duas, setSubCat, isLoading, refetch, subName} = useDuas()
+    // console.log("from dua section",subName)
+    const { subCatName } = useDuaStore()
   return (
     <div>
         {/* search field  */}
@@ -23,10 +27,14 @@ const DuaSection = () => {
                 <div className='space-y-[10px]'>
                   {/* section title  */}
                   <div className='h-[52px] w-full py-[15px] px-[30px] bg-white rounded-[10px] border border-[#E2E2E2]'>
-                    <p className='text-[#1FA45B] font-semibold text-[16px]'>Section: <span className='text-black text-[16px] font-medium'>The servant is dependent on his lord</span></p>
+                    <p className='text-[#1FA45B] font-semibold text-[16px]'>Section: <span className='text-black text-[16px] font-medium'>{subCatName}</span></p>
                   </div>
                   {/* dua card  */}
-                  <DuaCard />
+                  {
+                    duas?.map((dua:any, index:number) => (
+                      <DuaCard key={index} dua={dua}/>
+                    ))
+                  }
                 </div>
     </div>
   )
