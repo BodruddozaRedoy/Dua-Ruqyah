@@ -6,6 +6,6 @@ import { create } from 'zustand'
 export const useDuaStore = create<any>((set) => ({
   subCatId: null,
   subCatName: "",
-  setSubCatId: (value:any) => set({ subCatId: value }),
-  setSubCatName: (value:any) => set({ subCatName: value }),
+  setSubCatId: (value:number) => set({ subCatId: value }),
+  setSubCatName: (value:string) => set({ subCatName: value }),
 }))

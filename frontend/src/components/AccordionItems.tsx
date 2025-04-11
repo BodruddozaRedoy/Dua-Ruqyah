@@ -19,7 +19,7 @@ const AccordionItems = ({ category }: any) => {
   const handleSub = (id: any, subName: any) => {
     // refetch()
     setSubCatId(id)
-    setSubCat(id)
+    // setSubCat(id)
     setSubCatName(subName)
   }
   return (
