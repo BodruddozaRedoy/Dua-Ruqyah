@@ -4,7 +4,7 @@ import axios from "axios"
 import { useState } from "react"
 
 export const useDuas = () => {
-    const [subCat, setSubCat] = useState(1)
+    const [subCat, setSubCat] = useState(null)
     const [subName, setSubName] = useState("")
       const { subCatName, subCatId } = useDuaStore()
     
@@ -13,11 +13,11 @@ export const useDuas = () => {
     const {data:duas=[], isLoading, refetch}= useQuery({
         queryKey: ['duas'],
         queryFn: async () => {
-            const res = await axios.get(`http://localhost:5000/api/dua/${subCatId}`)
+            const res = await axios.get(`http://localhost:5000/api/dua/${subCat ? subCat : 1}`)
             console.log("duas",res.data.dua)
             return res.data.dua
         },
-        enabled: !!subCatId
+        enabled: !!subCat
         
     })
 
