@@ -4,12 +4,14 @@ import DuaCard from './DuaCard'
 import { useDuas } from '@/hooks/useDuas'
 import { useSubCategory } from '@/hooks/useSubCategory'
 import { useDuaStore } from '@/store/duaStore'
+import { useQuery } from '@tanstack/react-query'
+import { axiosPublic } from '@/lib/axiosPublic'
 
 const DuaSection = () => {
   const { duas, isLoading, refetch } = useDuas()
-  const { subcategories } = useSubCategory()
-  const { subCatId, subCatName, setSubCatId, setSubCatName } = useDuaStore()
-  console.log("subs", subcategories)
+  const { subcategories, isLoading:subLoading, isError } = useSubCategory()
+  const { subCatId, subCatName, setSubCatId, setSubCatName, subCategories } = useDuaStore()
+  // console.log("subs", subCategories)
   // 🔁 Set default subcategory + refetch duas
   // useEffect(() => {
   //   if (subcategories.length > 0 && !subCatId) {
@@ -19,6 +21,27 @@ const DuaSection = () => {
   //     refetch() // 👉 manually trigger fetch after setting
   //   }
   // }, [subcategories, subCatId, setSubCatId, setSubCatName, refetch])
+
+  const { data: firstSubcategory = [] } = useQuery({
+    queryKey: ['subcategories'],
+    queryFn: async () => {
+      const res = await axiosPublic.get(`/api/subcategories/${1}`)
+      console.log("subcategories", res.data.subcategories)
+      return res.data.subcategories
+    },
+    // enabled: !!categoryId,
+  })
+
+  const {data: firstDua = []} = useQuery({
+    queryKey: ["firstDua"],
+    queryFn: async () => {
+      const res = await axiosPublic.get(`/api/dua/1`);
+      return res.data.dua;
+    },
+    // enabled: !!subCatId, // wait for subCatId
+  });
+
+  console.log("duas at dua section", duas)
 
   return (
     <div>
@@ -39,7 +62,7 @@ const DuaSection = () => {
           <p className='text-[#1FA45B] font-semibold text-[16px]'>
             Section:{' '}
             <span className='text-black text-[16px] font-medium'>
-              {subCatName || subcategories[0]?.subcat_name_en}
+              {subCatName ? subCatName : firstSubcategory[0]?.subcat_name_en}
             </span>
           </p>
         </div>
@@ -48,7 +71,7 @@ const DuaSection = () => {
         {isLoading ? (
           <p>Loading...</p>
         ) : (
-          duas?.map((dua: any, index: number) => (
+          (duas.length <= 0 ? firstDua : duas)?.map((dua: any, index: number) => (
             <DuaCard key={index} dua={dua} />
           ))
         )}

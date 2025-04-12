@@ -4,7 +4,7 @@ import { useQuery } from "@tanstack/react-query"
 import axios from "axios"
 
 export const useSubCategory = (categoryId?: string, open?: boolean) => {
-    const { setSubCatName, subCatId } = useDuaStore()
+    const { setSubCatName, subCatId, setSubCategories } = useDuaStore()
   const { data: subcategories = [], isLoading, isError } = useQuery({
     queryKey: ['subcategories', categoryId],
     queryFn: async () => {
