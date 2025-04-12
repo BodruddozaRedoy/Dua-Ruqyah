@@ -10,14 +10,14 @@ import DuaSection from '@/components/DuaSection';
 const Home = () => {
 
   return (
-    <div className='grid gap-10 grid-cols-12 w-full p-[40px] justify-center items-start'>
+    <div className='grid gap-10 grid-cols-1 xl:grid-cols-12 w-full xl:p-[40px] justify-center items-start'>
       {/* sidebar  */}
-      <section className=' col-span-1 rounded-[24px] bg-white py-[31px] flex flex-col justify-between items-center h-[927px]'>
+      <section className=' col-span-1 rounded-[24px] bg-white py-[31px] flex flex-row xl:flex-col justify-between items-center xl:h-[927px] w-full'>
         {/* logo  */}
         <img className=' object-cover' src="./unnamed.png" alt="" />
 
         {/* links */}
-        <div className='flex flex-col gap-[27px]'>
+        <div className='hidden xl:flex flex-col gap-[27px]'>
           <div className='bg-[#E8F0F5] rounded-full w-[38px] h-[38px] flex items-center justify-center'>
             <img src="./home.png" alt="" />
           </div>
@@ -47,7 +47,7 @@ const Home = () => {
         </div>
       </section>
       {/* category section  */}
-      <section className='col-span-3'>
+      <section className='col-span-1 xl:col-span-3 w-full'>
         <h1 className='text-[24px] font-semibold mb-[35px]'>Dua Page</h1>
         <div className='bg-white rounded-[10px] overflow-hidden'>
           <button className='bg-[#1FA45B] w-full h-[57px] text-[17px] font-semibold text-white'>Categories</button>
@@ -67,11 +67,11 @@ const Home = () => {
         </div>
       </section>
       {/* dua section  */}
-      <section className=' col-span-5 '>
+      <section className='col-span-1 xl:col-span-5 '>
         <DuaSection/>
       </section>
       {/* settings section  */}
-      <section className=' col-span-3 '>
+      <section className='col-span-1 xl:col-span-3 '>
         <div className='flex justify-between items-center  mb-[27px]'>
           <div></div>
           <div className='flex items-center gap-2'>
