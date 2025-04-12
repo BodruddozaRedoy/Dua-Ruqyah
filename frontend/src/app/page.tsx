@@ -10,7 +10,7 @@ import DuaSection from '@/components/DuaSection';
 const Home = () => {
 
   return (
-    <div className='grid gap-10 grid-cols-12 w-screen p-[40px] justify-center items-start'>
+    <div className='grid gap-10 grid-cols-12 w-full p-[40px] justify-center items-start'>
       {/* sidebar  */}
       <section className=' col-span-1 rounded-[24px] bg-white py-[31px] flex flex-col justify-between items-center h-[927px]'>
         {/* logo  */}
