@@ -31,13 +31,13 @@ const Home = () => {
             <img src="./3-keep-minus.png" alt="" />
           </div>
           <div className='bg-[#E8F0F5] rounded-full w-[38px] h-[38px] flex items-center justify-center'>
-            <img src="./group.png" alt="" />
+            <img src="./Group.png" alt="" />
           </div>
           <div className='bg-[#E8F0F5] rounded-full w-[38px] h-[38px] flex items-center justify-center'>
-            <img src="./vector.png" alt="" />
+            <img src="./Vector.png" alt="" />
           </div>
           <div className='bg-[#E8F0F5] rounded-full w-[38px] h-[38px] flex items-center justify-center'>
-            <img src="./group1.png" alt="" />
+            <img src="./Group1.png" alt="" />
           </div>
         </div>
 
@@ -90,7 +90,7 @@ const Home = () => {
             </div>
             <div className='bg-[#F7F8FA] rounded-[5px] flex gap-[13px] items-center py-[9px] px-[14px]'>
               <div className='w-[38px] h-[38px] bg-[#E8F0F5] flex items-center justify-center rounded-full'>
-                <img src="./frame.png" alt="" />
+                <img src="./Frame.png" alt="" />
               </div>
               <p className='text-[16px] text-[#868686]'>General Settings</p>
             </div>
