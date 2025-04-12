@@ -10,7 +10,7 @@ import DuaSection from '@/components/DuaSection';
 const Home = () => {
 
   return (
-    <div className='grid gap-10 grid-cols-1 xl:grid-cols-12 w-full xl:p-[40px] justify-center items-start'>
+    <div className='grid gap-10 grid-cols-1 xl:grid-cols-13 w-full xl:p-[40px] justify-center items-start'>
       {/* sidebar  */}
       <section className=' col-span-1 rounded-[24px] bg-white py-[31px] flex flex-row xl:flex-col justify-between items-center xl:h-[927px] w-full'>
         {/* logo  */}
@@ -67,7 +67,7 @@ const Home = () => {
         </div>
       </section>
       {/* dua section  */}
-      <section className='col-span-1 xl:col-span-5 '>
+      <section className='col-span-1 xl:col-span-6 '>
         <DuaSection/>
       </section>
       {/* settings section  */}
