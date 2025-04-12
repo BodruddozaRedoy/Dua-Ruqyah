@@ -9,6 +9,11 @@ app.use(express.json())
 app.use(cors())
 
 // api routes 
+
+app.get("/", (req, res) => {
+  res.json("Server running")
+} )
+
 app.get('/api/categories', (req, res) => {
     db.all('SELECT * FROM category', (err, rows) => {
       if (err) {
